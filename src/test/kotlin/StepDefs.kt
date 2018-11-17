@@ -27,8 +27,8 @@ class StepDefs: En {
     }
 
     init {
-        Given("^I have (\\d+) cukes in my belly$") { cukes: Int ->
-            print(cukes)
+        Given("open homePage") {
+            var page = StartP
         }
 
         When("^I wait (\\d+) hour$") { arg1: Int ->
