@@ -1,40 +1,35 @@
-
 import cucumber.api.java.After
 import cucumber.api.java.Before
 import cucumber.api.java8.En
-import initUtil.UtilResources
-import org.openqa.selenium.WebDriver
-import org.openqa.selenium.chrome.ChromeDriver
-import java.util.concurrent.TimeUnit
+import org.junit.Assert
+import pages.AbstractPage
+import pages.ResultPage
+import pages.StartPage
 
-class StepDefs: En {
-    lateinit var driver: WebDriver
-        private set
+class StepDefs : En {
+    var INIT: Init? = null
+    lateinit var CURRENT_PAGE: AbstractPage
 
     @Before
-    fun setUp() {
-        System.setProperty("webdriver.chrome.driver", "./driver/chromedriver.exe")
-        driver = ChromeDriver()
-
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS)
-        driver.manage().window().maximize()
-        driver.get(UtilResources.getParam("pageURL"))
+    fun set222Up() {
+        INIT = Init()
+        INIT!!.setUp()
     }
 
     @After
     fun driverClose() {
-        driver.close();
+        INIT!!.driverClose();
     }
 
     init {
-        Given("open homePage") {
-            var page = StartP
+        Given("open startPage") {
+            CURRENT_PAGE = StartPage(INIT!!.getWebDriver());
+            Assert.assertTrue("fwsfwe", CURRENT_PAGE.isPageOpened())
         }
 
-        When("^I wait (\\d+) hour$") { arg1: Int ->
-            print(arg1)
-//            // Write code here that turns the phrase above into concrete actions
-//            throw PendingException()
+        When("writes in the search bar \"([^\"]*)\"") { arg1: String ->
+            var page: StartPage = CURRENT_PAGE as StartPage
+            page.setSearchRequest(arg1)
         }
 
         Then("^my belly should growl$") {
