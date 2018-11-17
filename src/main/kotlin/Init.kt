@@ -12,7 +12,6 @@ class Init {
     fun setUp() {
         System.setProperty("webdriver.chrome.driver", "./driver/chromedriver.exe")
         driver = ChromeDriver()
-
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS)
         driver.manage().window().maximize()
         driver.get(UtilResources.getParam("pageURL"))

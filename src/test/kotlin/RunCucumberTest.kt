@@ -6,7 +6,8 @@ import org.junit.runner.RunWith
 
 @RunWith(Cucumber::class)
 @CucumberOptions(
-        features = ["src/test/features"],
+        features = ["src/test/resources"],
+//         format = ["pretty"],
         tags = ["@dev"]
 //        ,glue=["test.kotlin.StepDefs"]
  )

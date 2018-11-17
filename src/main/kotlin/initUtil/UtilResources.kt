@@ -8,7 +8,7 @@ import java.io.InputStream
 
 class UtilResources {
     companion object {
-        private val propFile = "./src/main/otlinTest/resources/config.properties"
+        private val propFile = "./src/main/kotlin/resources/config.properties"
         private var input: InputStream? = null
 
         fun getParam(param: String): String {
