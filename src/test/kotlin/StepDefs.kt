@@ -1,7 +1,6 @@
 import cucumber.api.java.After
 import cucumber.api.java.Before
 import cucumber.api.java8.En
-import org.junit.AfterClass
 import org.junit.Assert
 import pages.AbstractPage
 import pages.ResultPage
@@ -21,12 +20,13 @@ class StepDefs : En {
 
     @After
     fun driverClose() {
-        INIT!!.driverClose();
+        INIT!!.driverClose()
+        print("\n--------------Testing is over report is located: " + System.getProperty("user.dir") + "\\target\\htmlreports\\index.html-----------")
     }
 
 
-    private fun getAnotherNewHandle(setHandles:Set<String>): String? {
-        return INIT!!.getWebDriver().windowHandles.singleOrNull { e->!setHandles.contains(e) }
+    private fun getAnotherNewHandle(setHandles: Set<String>): String? {
+        return INIT!!.getWebDriver().windowHandles.singleOrNull { e -> !setHandles.contains(e) }
     }
 
     init {
@@ -41,35 +41,35 @@ class StepDefs : En {
         }
 
         Then("^is opened main page$") {
-            CURRENT_PAGE =ResultPage (INIT!!.getWebDriver())
-            Assert.assertTrue( CURRENT_PAGE.isPageOpened())
+            CURRENT_PAGE = ResultPage(INIT!!.getWebDriver())
+            Assert.assertTrue(CURRENT_PAGE.isPageOpened())
         }
 
         When("^number of search result exactly (\\d+)$") { arg1: Int ->
             val page: ResultPage = CURRENT_PAGE as ResultPage
-            Assert.assertEquals(page.countResult(),arg1)
+            Assert.assertEquals(page.countResult(), arg1)
         }
 
         When("^number of search result over (\\d+)$") { arg1: Int ->
-            Assert.assertTrue(CURRENT_PAGE.countResult()!! >arg1)
+            Thread.sleep(1000)
+            Assert.assertTrue(CURRENT_PAGE.countResult()!! > arg1)
         }
 
         Then("^is opened picture page$") {
-            CURRENT_PAGE =PictureResultPage (INIT!!.getWebDriver())
-            Assert.assertTrue( CURRENT_PAGE.isPageOpened())
+            CURRENT_PAGE = PictureResultPage(INIT!!.getWebDriver())
+            Assert.assertTrue(CURRENT_PAGE.isPageOpened())
         }
 
         Then("^is opened video page$") {
-            CURRENT_PAGE = VideoResultPage (INIT!!.getWebDriver())
-            Assert.assertTrue( CURRENT_PAGE.isPageOpened())
+            CURRENT_PAGE = VideoResultPage(INIT!!.getWebDriver())
+            Assert.assertTrue(CURRENT_PAGE.isPageOpened())
         }
 
         When("^click navigation item by name \"([^\"]*)\"$") { arg1: String ->
-            var currPageHandle:Set<String> = INIT!!.getWebDriver().windowHandles
+            var currPageHandle: Set<String> = INIT!!.getWebDriver().windowHandles
             val page: ResultPage = CURRENT_PAGE as ResultPage
             page.clickNaviItem(arg1)
             INIT!!.getWebDriver().switchTo().window(getAnotherNewHandle(currPageHandle))
-//div[contains(@class, 'serp-list serp-list_type_search serp-list_unique')]/div[@role='listitem']
         }
     }
 }

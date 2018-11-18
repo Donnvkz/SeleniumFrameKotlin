@@ -1,11 +1,12 @@
 @all
+@dev
 Feature: Test search result
 
   Scenario: Scenario 1
     Given open startPage
     When writes in the search bar "NOVOSIBIRSK" and click Searh Button
     Then is opened main page
-    When number of search result over 10
+    When number of search result over 2
 
 
   Scenario: Scenario 2

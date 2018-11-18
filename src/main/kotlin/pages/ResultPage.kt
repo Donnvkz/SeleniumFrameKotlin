@@ -15,7 +15,7 @@ open class ResultPage(driver: WebDriver) : StartPage(driver) {
     private val RESULTS: List<WebElement>? = null
 
     @FindBy(xpath = "//div[@class='misspell__message' or @class='misspell']")
-    val MISSPEL_MESSAGE: WebElement? = null
+    val MISSPEL_MESSAGE: List<WebElement>? = null
 
     @FindBy(xpath = "//div[contains(@class,'navigation__item navigation__item_service_yes navigation__item_name')]")
     val NAVIGATION_ITEMS: List<WebElement>? = null
@@ -28,7 +28,6 @@ open class ResultPage(driver: WebDriver) : StartPage(driver) {
     }
 
     override fun countResult(): Int? {
-        if(MISSPEL_MESSAGE!!.text.equals("Задан пустой поисковый запрос")) return 0
         return RESULTS?.size
     }
 

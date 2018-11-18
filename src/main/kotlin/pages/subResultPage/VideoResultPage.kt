@@ -17,7 +17,6 @@ class VideoResultPage(driver: WebDriver) : ResultPage(driver) {
     }
 
     override fun countResult(): Int? {
-        if(MISSPEL_MESSAGE!!.text.equals("По вашему запросу ничего не нашлось.")) return 0
         return RESULTS?.size
     }
 

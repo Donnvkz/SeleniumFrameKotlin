@@ -3,11 +3,11 @@ Feature: Test category Picture
 
   Scenario: Scenario 1
     Given open startPage
-    When writes in the search bar "NOVOSIBIRSK" and click Searh Button
+    When writes in the search bar "MOSCOW" and click Searh Button
     Then is opened main page
     When click navigation item by name "Картинки"
     Then is opened picture page
-    When number of search result over 30
+    When number of search result over 10
 
 
 

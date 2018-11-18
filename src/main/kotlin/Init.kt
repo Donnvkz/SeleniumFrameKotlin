@@ -18,7 +18,7 @@ class Init {
     }
 
     fun driverClose() {
-        driver.quit();
+        driver.quit()
     }
 
     fun getWebDriver(): WebDriver {
