@@ -1,2 +1,2 @@
 # SeleniumFrameKotlin
-Kotlin+Selenium+TestNG
+Kotlin+Selenium+JUnit+Cucumber
