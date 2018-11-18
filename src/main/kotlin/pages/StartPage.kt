@@ -5,6 +5,9 @@ import org.openqa.selenium.WebElement
 import org.openqa.selenium.support.FindBy
 
 open class StartPage(driver: WebDriver) : AbstractPage(driver) {
+    override fun countResult(): Int? {
+        return 0
+    }
 
     @FindBy(xpath = "//a[@title='Яндекс']")
     private val LOGO: WebElement? = null

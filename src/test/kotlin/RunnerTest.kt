@@ -7,9 +7,9 @@ import org.junit.runner.RunWith
 @RunWith(Cucumber::class)
 @CucumberOptions(
         features = ["src/test/resources"],
-//         format = ["pretty", "html:target/htmlreports" ],
+        format = ["pretty", "html:target/htmlreports" ],
         tags = ["@dev"]
 //        ,glue=["test.kotlin.StepDefs"]
  )
 
-class RunCucumberTest
+class RunnerTest

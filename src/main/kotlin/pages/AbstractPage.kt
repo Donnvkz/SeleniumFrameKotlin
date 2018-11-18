@@ -8,4 +8,6 @@ abstract class AbstractPage( driver: WebDriver) {
         PageFactory.initElements(driver, this)
     }
     abstract fun isPageOpened(): Boolean
+
+    abstract fun countResult(): Int?
 }
